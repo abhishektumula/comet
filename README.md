@@ -1,22 +1,26 @@
 # Kaldock
 
-Kaldock is a platform for building and managing AI voice agents that sound real. It's designed to be easy to use and built to automate conversations in various industries.
+Your Platform for Building Hyper-Realistic AI Voice Agents.
 
-## Key Features
+Kaldock is a powerful platform designed to help businesses automate and enhance their customer interactions through incredibly human-like AI voice agents. Move beyond robotic IVRs and create engaging, intelligent conversational experiences for your users. Whether for customer support, sales outreach, or appointment booking, Kaldock provides the tools to build, manage, and deploy voice agents tailored to your specific needs.
 
-- **AI Voice Agents:** Create realistic AI voice agents for industries like SaaS, HealthCare, E-Commerce, and Home Services.
-- **Dashboard:** A user-friendly dashboard to manage your voice agents.
-- **Chat Interface:** Interact with your AI agents through a chat interface.
-- **API:** An API to integrate the voice agents into your own applications.
+## Core Features (MVP)
 
-## Technologies Used
+Our current version focuses on providing a robust and user-friendly foundation for your voice AI strategy.
 
-- **Framework:** [Next.js](https://nextjs.org/)
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **UI:** [React](https://reactjs.org/)
-- **Backend:** [Supabase](https://supabase.io/)
-- **Animation:** [Framer Motion](https://www.framer.com/motion/)
+- **Realistic Voice Agent Creation:** Effortlessly design and launch AI voice agents for a variety of sectors including SaaS, Healthcare, E-commerce, and Home Services. Our agents are built to understand context, handle complex queries, and sound remarkably real.
+- **Centralized Agent Management:** Use our intuitive dashboard to monitor, update, and manage all your voice agents from a single place. Track performance and make adjustments on the fly.
+- **Real-time Interaction & Testing:** Engage with your AI agents through a built-in chat interface. This allows for quick testing, refinement, and demonstration of your agent's capabilities before deploying them to a live environment.
+- **Seamless API Integration:** Easily integrate your custom voice agents into existing applications, websites, or contact center software with our straightforward and powerful API.
+
+## Upcoming Features
+
+We are constantly working to expand Kaldock's capabilities. Here's a sneak peek at what's coming soon:
+
+- **Advanced Analytics Suite:** Gain deeper insights into agent performance, call durations, resolution rates, and user satisfaction with a comprehensive analytics dashboard.
+- **Multi-language Support:** Build and deploy agents that can communicate fluently with your customers in multiple languages.
+- **CRM & Software Integration:** Native integrations with popular CRMs and business tools to streamline workflows and provide more personalized customer experiences.
+- **Voice Customization:** Fine-tune your agent's voice, accent, and tone, or even clone a specific voice to perfectly match your brand's identity.
 
 ## Getting Started
 
