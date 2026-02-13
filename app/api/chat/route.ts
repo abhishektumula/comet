@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     if (!OPENROUTER_KEY) {
       return NextResponse.json(
         { error: "Missing OPENROUTER_API_KEY in server environment." },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
       console.log("OPENROUTER ERROR:", data);
       return NextResponse.json(
         { error: data?.error || "OpenRouter request failed." },
-        { status: res.status }
+        { status: res.status },
       );
     }
 
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     console.error("SERVER ERROR:", error);
     return NextResponse.json(
       { error: "Server crashed processing request." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
