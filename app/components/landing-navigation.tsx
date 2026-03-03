@@ -1,9 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-export const KalDock = () => {
+const KalDock = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,41 +21,36 @@ export const KalDock = () => {
   );
 };
 
-const links = [
-  { title: "Feature", href: "/" },
-  { title: "Dashboard", href: "/dashboard" },
-  { title: "Builder", href: "/new-agent" },
-  { title: "Chat", href: "/chat" },
-];
-
-const BaseNavigation = () => {
-  const pathname = usePathname();
+export const LandingNavigation = () => {
+  const refs = [
+    { title: "Feature", href: "/" },
+    { title: "Pricing", href: "/" },
+    { title: "Chat", href: "/chat" },
+    { title: "API", href: "/" },
+  ];
 
   return (
     <div className="flex flex-row items-center justify-between p-4">
-      <Link href="/" className="text-neutral-900 transition duration-300 hover:text-black">
+      <div className="text-neutral-900 transition duration-300 hover:text-black">
         <span className="flex flex-row gap-2">
           <KalDock />
           KalDock
         </span>
-      </Link>
+      </div>
 
-      <div className="hidden flex-row gap-8 md:flex">
-        {links.map((each) => (
-          <div key={each.title} className={`text-lg ${pathname === each.href ? "text-black font-semibold" : "text-neutral-800"}`}>
+      <div className="flex flex-row gap-8">
+        {refs.map((each) => (
+          <div key={each.title} className="text-lg text-neutral-800">
             <Link href={each.href}>{each.title}</Link>
           </div>
         ))}
       </div>
 
       <div>
-        <Link href="/agent">
-          <button className="rounded-xl bg-neutral-800 px-6 py-2 text-neutral-200">Live Agent</button>
+        <Link href="/dashboard">
+          <button className="rounded-xl bg-neutral-800 px-8 py-2 text-neutral-200">Dashboard</button>
         </Link>
       </div>
     </div>
   );
 };
-
-export const NavigationBar = () => <BaseNavigation />;
-export const DashboardNavigationBar = () => <BaseNavigation />;

@@ -8,28 +8,59 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Hides scrollbar visually */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.section-frame {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
 }
-.scrollbar-hide {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+
+.primary-button {
+  border-radius: 0.75rem;
+  background: #171717;
+  color: #f5f5f5;
+  padding: 0.65rem 1rem;
+  transition: all 220ms ease;
+}
+
+.primary-button:hover {
+  background: #0f0f0f;
+}
+
+.ghost-button {
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #171717;
+  padding: 0.65rem 1rem;
+  transition: all 220ms ease;
+}
+
+.ghost-button:hover {
+  background: #fafafa;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
 }

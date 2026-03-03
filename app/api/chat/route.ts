@@ -1,60 +1,39 @@
 import { NextResponse } from "next/server";
+import { OpenRouterClient, type ChatMessage } from "../../lib/openrouter-client";
+
+const FALLBACK_MODEL = "z-ai/glm-4.5-air";
 
 export async function POST(req: Request) {
   try {
-    const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY;
+    const key =
+      process.env.OPENROUTER_API_KEY ||
+      process.env.OPENAI_API_KEY ||
+      process.env.OPEN_API_KEY;
 
-    if (!OPENROUTER_KEY) {
+    if (!key) {
       return NextResponse.json(
-        { error: "Missing OPENROUTER_API_KEY in server environment." },
+        { error: "Missing API key. Set OPENROUTER_API_KEY (or OPENAI_API_KEY) in .env." },
         { status: 500 },
       );
     }
 
     const { model, messages } = await req.json();
 
-    const headers = {
-      Authorization: `Bearer ${OPENROUTER_KEY}`,
-      "Content-Type": "application/json",
-      "HTTP-Referer": "http://localhost:3000", // REQUIRED
-      "X-Title": "My AI Chat App",
-    };
-
-    // Build the payload for OpenRouter
-    const body = {
-      model: model || "openai/gpt-4o-mini",
-      messages,
-      reasoning: { enabled: true },
-    };
-
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      console.log("OPENROUTER ERROR:", data);
-      return NextResponse.json(
-        { error: data?.error || "OpenRouter request failed." },
-        { status: res.status },
-      );
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return NextResponse.json({ error: "Invalid messages payload." }, { status: 400 });
     }
 
-    const choice = data?.choices?.[0];
-    const reply = choice?.message?.content || "⚠️ Empty response from model";
-
-    return NextResponse.json({
-      reply,
-      raw: data,
+    const client = new OpenRouterClient(key);
+    const completion = await client.chatCompletionsCreate({
+      model: model || FALLBACK_MODEL,
+      messages: messages as ChatMessage[],
     });
+
+    const reply = completion?.choices?.[0]?.message?.content || "Empty response from model.";
+
+    return NextResponse.json({ reply, raw: completion });
   } catch (error) {
-    console.error("SERVER ERROR:", error);
-    return NextResponse.json(
-      { error: "Server crashed processing request." },
-      { status: 500 },
-    );
+    const message = error instanceof Error ? error.message : "Server crashed processing request.";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

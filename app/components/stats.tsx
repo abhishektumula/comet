@@ -1,43 +1,29 @@
-import { number } from "motion";
-
-type Props = {
-  better: number;
-  symbol: string;
+type StatProps = {
+  value: string;
   desc: string;
 };
 
-export const Stat = ({ better, desc, symbol }: Props) => {
+const Stat = ({ value, desc }: StatProps) => {
   return (
-    <div className="flex flex-col gap-2">
-      <div>
-        <h1 className="text-bold text-black text-3xl font-bold">
-          {better}
-          <span className="text-black text-xl font-bold">{symbol}</span>
-        </h1>
-      </div>
-      <div>
-        <p className="text-neutral-600 text-sm font-semibold"> {desc}</p>
-      </div>
+    <div className="rounded-2xl border border-[rgba(15,17,19,0.16)] p-4">
+      <p className="text-3xl font-semibold">{value}</p>
+      <p className="mt-1 text-sm text-[var(--ink-600)]">{desc}</p>
     </div>
   );
 };
 
 export const StatsComp = () => {
   const stats = [
-    { number: 3, desc: "Better leads", symbol: "x" },
-    { number: 89, desc: "says it is like human", symbol: "%" },
-    { number: 2.5, desc: "longer calls", symbol: "x" },
-    { number: 4, desc: "more bookings", symbol: "x" },
+    { value: "3x", desc: "better leads" },
+    { value: "89%", desc: "human-like quality" },
+    { value: "2.5x", desc: "longer calls" },
+    { value: "4x", desc: "more bookings" },
   ];
+
   return (
-    <div className="flex flex-row gap-6">
-      {stats.map((each, idx) => (
-        <Stat
-          key={idx}
-          better={each.number}
-          desc={each.desc}
-          symbol={each.symbol}
-        />
+    <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+      {stats.map((entry) => (
+        <Stat key={entry.desc} value={entry.value} desc={entry.desc} />
       ))}
     </div>
   );

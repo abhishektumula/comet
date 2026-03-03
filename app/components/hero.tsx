@@ -1,103 +1,108 @@
 "use client";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { KalDock } from "./navigation";
+
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const sectors = ["Hospitality", "Property", "Legal Intake", "Clinics", "E-Commerce"];
 
 export const Hero = () => {
-  const [current, setCurrent] = useState<number>(0);
+  const [index, setIndex] = useState(0);
 
-  const titles = [
-    "Saas Companies",
-    "HealthCare",
-    "E-Commerce",
-    "Home Services",
-  ];
-
-  // Rotate title every 3 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % titles.length);
-    }, 3000);
+    const ticker = setInterval(() => {
+      setIndex((prev) => (prev + 1) % sectors.length);
+    }, 2400);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(ticker);
   }, []);
 
   return (
-    <div className="flex flex-row w-full h-auto items-center justify-between mx-auto p-6">
-      <div className="w-1/2">
-        <h1 className="text-black text-6xl">AI voice agents for</h1>
+    <section className="grid gap-8 pb-8 pt-8 md:grid-cols-[1.25fr_0.95fr] md:gap-12 md:pb-16 md:pt-14">
+      <div className="space-y-7">
+        <div className="eyebrow reveal-up">Conversational Revenue Engine</div>
 
-        {/* Animate title change */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            className="flex flex-row text-neutral-700 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {titles[current].split("").map((letter, idx) => (
-              <motion.h1
-                key={idx}
-                className="text-6xl font-bold"
-                initial={{ x: 20, opacity: 0, filter: "blur(4px)" }}
-                animate={{
-                  x: 0,
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  duration: 0.25,
-                  delay: idx * 0.04,
-                  ease: "easeOut",
-                }}
-              >
-                {letter}
-              </motion.h1>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-        <div className="pt-8">
-          <p className="text-2xl text-neutral-700">
-            Your complete platform for AI voice agents that sound real. Easiest
-            to use, best sounding, built to automate it all.
-          </p>
-        </div>
-        <div className="pt-6 ">
-          <Link href="/dashboard">
-            <motion.button
-              whileTap={{ scale: 0.8 }}
-              transition={{ duration: 0.1 }}
-              className="px-8 py-4 bg-black text-neutral-100 rounded-lg hover:rounded-2xl text-xl transition-all duration-300"
+        <h1 className="headline reveal-up">
+          Typographic
+          <br />
+          Voice Ops
+          <br />
+          For
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={sectors[index]}
+              className="ml-3 inline-block text-[var(--coral-500)]"
+              initial={{ opacity: 0, y: 14, rotateX: -20 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35 }}
             >
-              Get your voice agent
-            </motion.button>
+              {sectors[index]}
+            </motion.span>
+          </AnimatePresence>
+        </h1>
+
+        <p className="max-w-[58ch] text-[var(--ink-800)]">
+          Build agents that sound human, route with context, and close intent faster.
+          Kaldock combines script design, behavior controls, and real-time monitoring in one surface.
+        </p>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <Link href="/new-agent" className="primary-button">
+            Launch New Agent
+          </Link>
+          <Link href="/chat" className="ghost-button">
+            Test Chat Studio
           </Link>
         </div>
-      </div>
-      <div className="w-1/2">
-        <div className="m-10 bg-neutral-100 h-140 w-[80%] mx-auto border border-neutral-400 rounded-2xl shadow-xl/20 flex flex-col justify-start items-start">
-          <div className="p-6 text-neutral-700 transition text duration-300">
-            <span className="flex flex-row gap-2">
-              <KalDock />
-              KalDock
+
+        <div className="flex flex-wrap gap-2">
+          {["Intent scoring", "Latency watch", "Adaptive scripts", "Campaign memory"].map((pill) => (
+            <span key={pill} className="liquid-chip">
+              {pill}
             </span>
-          </div>
-          <div className="w-[80%] p-6 mx-6 flex justify-start items-start border border-neutral-300 rounded-tl-2xl border-md">
-            <h1 className="text-neutral-800">
-              Hey there! I'm an AI assistant from Calldock. Want to see how I
-              work? I can either give you a quick demo call or you can listen to
-              some recordings first.
-            </h1>
-          </div>
-          <div className="mx-6 px-2 py-4 w-[80%] flex items-start ">
-            <button className="bg-black text-neutral-100 px-4 py-2 rounded-xl">
-              Give me a call
-            </button>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
+
+      <motion.div
+        className="section-frame float-card relative overflow-hidden rounded-3xl p-6 md:p-8"
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <div className="absolute right-5 top-5 inline-flex items-center gap-2 rounded-full border border-[rgba(15,17,19,0.2)] bg-[rgba(246,241,232,0.7)] px-3 py-1">
+          <span className="status-dot" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.15em]">Live Calls</span>
+        </div>
+
+        <div className="pt-9">
+          <p className="eyebrow mb-4">Sample Conversation</p>
+
+          <div className="space-y-3 text-sm">
+            <div className="chat-bubble ml-auto max-w-[90%] bg-[rgba(15,17,19,0.08)]">
+              Can you book a same-day pest inspection for 4pm?
+            </div>
+            <div className="chat-bubble max-w-[92%] border-[rgba(123,212,181,0.55)] bg-[rgba(123,212,181,0.15)]">
+              Absolutely. I can confirm 4:00 PM today at 14 King Street. Want SMS confirmation too?
+            </div>
+            <div className="chat-bubble ml-auto max-w-[85%] bg-[rgba(15,17,19,0.08)]">Yes, send to +1 408 333 1209.</div>
+          </div>
+        </div>
+
+        <div className="gradient-line mt-7" />
+
+        <div className="mt-5 flex items-end justify-between">
+          <div>
+            <p className="text-4xl font-semibold">31%</p>
+            <p className="eyebrow mt-1">higher booking conversion</p>
+          </div>
+          <div className="text-right">
+            <p className="text-lg font-semibold">89ms</p>
+            <p className="eyebrow mt-1">avg response latency</p>
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 };
