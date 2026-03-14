@@ -88,9 +88,9 @@ export const LandingHero = () => {
   }, []);
 
   return (
-    <section className="px-4 pb-14 pt-4 md:pb-24">
-      <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div className="flex flex-col gap-7">
+    <section className="px-4 pb-20 pt-6 md:pb-32 md:pt-8">
+      <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+        <div className="flex flex-col gap-9 md:gap-10">
           <div className="inline-flex w-fit items-center gap-2 rounded-full bg-stone-100 px-4 py-2 text-sm text-neutral-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_8px_18px_rgba(15,23,42,0.08)]">
             <IconWaveSine size={18} />
             Hyper-realistic AI voice agents
@@ -148,7 +148,7 @@ export const LandingHero = () => {
             </button>
           </div>
 
-          <div className="grid gap-3 pt-2 sm:grid-cols-3">
+          <div className="grid gap-4 pt-4 sm:grid-cols-3">
             {metrics.map((metric) => (
               <div
                 key={metric.label}
@@ -204,7 +204,7 @@ export const LandingHero = () => {
         </div>
       </div>
 
-      <div className="mt-16 rounded-[2rem] bg-stone-100 px-6 py-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),inset_0_-10px_20px_rgba(0,0,0,0.04),0_18px_36px_rgba(15,23,42,0.06)]">
+      <div className="mt-24 rounded-[2rem] bg-stone-100 px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),inset_0_-10px_20px_rgba(0,0,0,0.04),0_18px_36px_rgba(15,23,42,0.06)] md:mt-28">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <div className="text-sm uppercase tracking-[0.22em] text-neutral-500">Built for teams that miss calls</div>
@@ -225,7 +225,7 @@ export const LandingHero = () => {
         </div>
       </div>
 
-      <div className="mt-20 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div className="mt-28 grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
         <div className="flex flex-col justify-between rounded-[2rem] bg-neutral-900 px-7 py-8 text-white shadow-[inset_0_-14px_24px_rgba(255,255,255,0.08),0_24px_48px_rgba(0,0,0,0.18)]">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
@@ -241,7 +241,7 @@ export const LandingHero = () => {
             </p>
           </div>
 
-          <div className="mt-8 rounded-[1.75rem] bg-white/6 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+          <div className="mt-10 rounded-[1.75rem] bg-white/6 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
             <div className="flex flex-wrap gap-2">
               {[
                 { key: "qualify", label: "Qualify" },
@@ -315,7 +315,7 @@ export const LandingHero = () => {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
             <div className="rounded-[1.6rem] bg-white/8 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
               <div className="text-sm uppercase tracking-[0.2em] text-white/50">Average pickup</div>
               <div className="mt-2 text-4xl font-semibold tracking-[-0.05em]">2 sec</div>
@@ -327,8 +327,8 @@ export const LandingHero = () => {
           </div>
         </div>
 
-        <div className="px-1 py-2">
-          <div className="grid gap-10">
+        <div className="px-1 py-3">
+          <div className="grid gap-14">
             {capabilities.map((capability, index) => {
               const Icon = capability.icon;
               const isFirst = index === 0;
@@ -374,14 +374,14 @@ export const LandingHero = () => {
         </div>
       </div>
 
-      <div className="mt-20 grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+      <div className="mt-28 grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-14">
         <div className="rounded-[2rem] bg-stone-100 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),inset_0_-12px_20px_rgba(0,0,0,0.05),0_18px_40px_rgba(15,23,42,0.06)]">
           <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-neutral-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_8px_18px_rgba(15,23,42,0.05)]">
             <IconTopologyStar3 size={16} />
             How it works
           </div>
 
-          <div className="mt-6 grid gap-4">
+          <div className="mt-8 grid gap-5">
             {workflow.map((step, index) => {
               const Icon = step.icon;
 
@@ -439,7 +439,7 @@ export const LandingHero = () => {
         </div>
       </div>
 
-      <div className="mt-20 rounded-[2.25rem] bg-black px-7 py-10 text-white shadow-[inset_0_-14px_24px_rgba(255,255,255,0.08),0_28px_54px_rgba(0,0,0,0.22)] md:px-10">
+      <div className="mt-28 rounded-[2.25rem] bg-black px-7 py-12 text-white shadow-[inset_0_-14px_24px_rgba(255,255,255,0.08),0_28px_54px_rgba(0,0,0,0.22)] md:px-10 md:py-14">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
