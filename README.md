@@ -1,8 +1,8 @@
-# Kaldock (Work in progress)
+# Comet (Work in progress)
 
 Your Platform for Building Hyper-Realistic AI Voice Agents.
 
-Kaldock is a powerful platform designed to help businesses automate and enhance their customer interactions through incredibly human-like AI voice agents. Move beyond robotic IVRs and create engaging, intelligent conversational experiences for your users. Whether for customer support, sales outreach, or appointment booking, Kaldock provides the tools to build, manage, and deploy voice agents tailored to your specific needs.
+Comet is a powerful platform designed to help businesses automate and enhance their customer interactions through incredibly human-like AI voice agents. Move beyond robotic IVRs and create engaging, intelligent conversational experiences for your users. Whether for customer support, sales outreach, or appointment booking, Comet provides the tools to build, manage, and deploy voice agents tailored to your specific needs.
 
 ## Core Features (MVP)
 
@@ -15,7 +15,7 @@ Our current version focuses on providing a robust and user-friendly foundation f
 
 ## Upcoming Features
 
-We are constantly working to expand Kaldock's capabilities. Here's a sneak peek at what's coming soon:
+We are constantly working to expand Comet's capabilities. Here's a sneak peek at what's coming soon:
 
 - **Advanced Analytics Suite:** Gain deeper insights into agent performance, call durations, resolution rates, and user satisfaction with a comprehensive analytics dashboard.
 - **Multi-language Support:** Build and deploy agents that can communicate fluently with your customers in multiple languages.
@@ -37,7 +37,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  Clone the repo
     ```sh
-    git clone https://github.com/your_username_/kaldock.git
+    git clone https://github.com/your_username_/comet.git
     ```
 2.  Install NPM packages
     ```sh
@@ -61,10 +61,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 To get a local copy of this project, open your terminal and run the following command:
 
 ```bash
-git clone https://github.com/your_username_/kaldock.git
+git clone https://github.com/your_username_/comet.git
 ```
 
-This will create a `kaldock` directory on your local machine containing all the project files.
+This will create a `comet` directory on your local machine containing all the project files.
 
 ## Updating External Scripts (e.g., in `.tsx` files)
 
