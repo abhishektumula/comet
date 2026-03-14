@@ -1,25 +1,5 @@
 import Link from "next/link";
-
-const KalDock = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      color="currentColor"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M13 2a9 9 0 0 1 9 9" />
-      <path d="M13 6a5 5 0 0 1 5 5" />
-      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
-    </svg>
-  );
-};
+import { IconSparkles, IconArrowUpRight } from "@tabler/icons-react";
 
 export const LandingNavigation = () => {
   const refs = [
@@ -30,17 +10,20 @@ export const LandingNavigation = () => {
   ];
 
   return (
-    <div className="flex flex-row items-center justify-between p-4">
-      <div className="text-neutral-900 transition duration-300 hover:text-black">
-        <span className="flex flex-row gap-2">
-          <KalDock />
-          KalDock
+    <div className="flex flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between">
+      <Link
+        href="/"
+        className="inline-flex items-center gap-3 rounded-full bg-stone-100 px-4 py-2 text-neutral-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_10px_24px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-0.5"
+      >
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white shadow-[inset_0_-2px_6px_rgba(255,255,255,0.12),0_8px_16px_rgba(0,0,0,0.24)]">
+          <IconSparkles size={18} />
         </span>
-      </div>
+        <span className="text-lg font-semibold tracking-[-0.03em]">Comet</span>
+      </Link>
 
-      <div className="flex flex-row gap-8">
+      <div className="flex flex-wrap gap-6 md:flex-row md:gap-8">
         {refs.map((each) => (
-          <div key={each.title} className="text-lg text-neutral-800">
+          <div key={each.title} className="text-lg text-neutral-800 transition hover:text-black">
             <Link href={each.href}>{each.title}</Link>
           </div>
         ))}
@@ -48,7 +31,10 @@ export const LandingNavigation = () => {
 
       <div>
         <Link href="/dashboard">
-          <button className="rounded-xl bg-neutral-800 px-8 py-2 text-neutral-200">Dashboard</button>
+          <button className="inline-flex items-center gap-2 rounded-2xl bg-black px-6 py-3 text-sm font-medium text-neutral-100 shadow-[inset_0_-2px_8px_rgba(255,255,255,0.12),0_14px_30px_rgba(0,0,0,0.24)] transition hover:-translate-y-0.5">
+            Dashboard
+            <IconArrowUpRight size={16} />
+          </button>
         </Link>
       </div>
     </div>
