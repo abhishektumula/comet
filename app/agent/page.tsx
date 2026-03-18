@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   IconActivityHeartbeat,
@@ -33,20 +34,39 @@ export default function AgentPage() {
   const [recentCalls, setRecentCalls] = useState(recentCallSeed);
 
   const agentId = "cd_8701kbyj8c8zf4c8rz94j4ctfer9";
-  const embedScript = `<script src=\"https://www.calldock.co/widget.js\" data-agentid=\"${agentId}\" data-logo-width=\"24\" data-logo-height=\"24\"></script>`;
+  const embedScript = `<script src=\"https://www.comet.co/widget.js\" data-agentid=\"${agentId}\" data-logo-width=\"24\" data-logo-height=\"24\"></script>`;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setSeries((prev) => {
-        const next = Math.max(36, Math.min(84, prev[prev.length - 1] + Math.floor(Math.random() * 11) - 5));
+        const next = Math.max(
+          36,
+          Math.min(
+            84,
+            prev[prev.length - 1] + Math.floor(Math.random() * 11) - 5,
+          ),
+        );
         return [...prev.slice(1), next];
       });
 
       setStats((prev) => ({
-        activeCalls: Math.max(2, Math.min(9, prev.activeCalls + (Math.random() > 0.55 ? 1 : -1))),
+        activeCalls: Math.max(
+          2,
+          Math.min(9, prev.activeCalls + (Math.random() > 0.55 ? 1 : -1)),
+        ),
         callsHandled: prev.callsHandled + (Math.random() > 0.45 ? 1 : 0),
-        bookingRate: Math.max(31, Math.min(44, prev.bookingRate + (Math.random() > 0.6 ? 1 : Math.random() < 0.15 ? -1 : 0))),
-        avgLatency: Math.max(620, Math.min(920, prev.avgLatency + Math.floor(Math.random() * 51) - 25)),
+        bookingRate: Math.max(
+          31,
+          Math.min(
+            44,
+            prev.bookingRate +
+              (Math.random() > 0.6 ? 1 : Math.random() < 0.15 ? -1 : 0),
+          ),
+        ),
+        avgLatency: Math.max(
+          620,
+          Math.min(920, prev.avgLatency + Math.floor(Math.random() * 51) - 25),
+        ),
       }));
 
       setRecentCalls((prev) => {
@@ -103,22 +123,39 @@ export default function AgentPage() {
             <div>
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <div className="text-sm uppercase tracking-[0.22em] text-neutral-400">Live agent monitor</div>
+                  <div className="text-sm uppercase tracking-[0.22em] text-neutral-400">
+                    Live agent monitor
+                  </div>
                   <h1 className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-black md:text-5xl">
                     Arora Agent
                   </h1>
                   <div className="mt-3 flex items-center gap-2 text-sm text-gray-600">
                     <span className="font-mono">{agentId}</span>
-                    <button onClick={() => copy(agentId)} className="rounded p-1 hover:bg-gray-100">
+                    <button
+                      onClick={() => copy(agentId)}
+                      className="rounded p-1 hover:bg-gray-100"
+                    >
                       <IconCopy size={16} />
                     </button>
                   </div>
-                  {copied && <p className="mt-1 text-xs text-green-700">Copied</p>}
+                  {copied && (
+                    <p className="mt-1 text-xs text-green-700">Copied</p>
+                  )}
                 </div>
 
-                <div className="rounded-2xl bg-white px-4 py-3 text-right shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_12px_24px_rgba(15,23,42,0.05)]">
-                  <p className="text-xs uppercase tracking-[0.18em] text-gray-400">Status</p>
-                  <p className="mt-1 font-semibold text-green-700">Live</p>
+                <div className="flex flex-col gap-3">
+                  <div className="rounded-2xl bg-white px-4 py-3 text-right shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_12px_24px_rgba(15,23,42,0.05)]">
+                    <p className="text-xs uppercase tracking-[0.18em] text-gray-400">
+                      Status
+                    </p>
+                    <p className="mt-1 font-semibold text-green-700">Live</p>
+                  </div>
+
+                  <Link href="/stats">
+                    <button className="rounded-2xl bg-black px-4 py-3 text-sm font-medium text-white shadow-[inset_0_-4px_10px_rgba(255,255,255,0.12),0_14px_30px_rgba(0,0,0,0.2)] transition hover:-translate-y-0.5">
+                      Stats
+                    </button>
+                  </Link>
                 </div>
               </div>
 
@@ -150,17 +187,25 @@ export default function AgentPage() {
               </div>
 
               <div className="mt-6 grid gap-4 md:grid-cols-2">
-                <Info title="First Response" value="Hi, I am Arora. How can I help you today?" />
+                <Info
+                  title="First Response"
+                  value="Hi, I am Arora. How can I help you today?"
+                />
                 <Info title="Voice" value="Hayden" />
                 <Info title="Max Call Duration" value="5 minutes" />
-                <Info title="Knowledge Sources" value="1 knowledge base connected" />
+                <Info
+                  title="Knowledge Sources"
+                  value="1 knowledge base connected"
+                />
               </div>
             </div>
 
             <div className="rounded-[1.8rem] bg-white px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.94),0_16px_32px_rgba(15,23,42,0.06)]">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-sm uppercase tracking-[0.22em] text-neutral-400">Realtime trend</div>
+                  <div className="text-sm uppercase tracking-[0.22em] text-neutral-400">
+                    Realtime trend
+                  </div>
                   <div className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-black">
                     Call quality over the last hour
                   </div>
@@ -181,13 +226,19 @@ export default function AgentPage() {
                     className="grid gap-3 rounded-[1.3rem] bg-stone-50 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] md:grid-cols-[1fr_auto_auto]"
                   >
                     <div>
-                      <div className="text-base font-semibold text-black">{call.caller}</div>
-                      <div className="mt-1 text-sm text-neutral-500">{call.state}</div>
+                      <div className="text-base font-semibold text-black">
+                        {call.caller}
+                      </div>
+                      <div className="mt-1 text-sm text-neutral-500">
+                        {call.state}
+                      </div>
                     </div>
                     <div className="self-center rounded-full bg-white px-3 py-1 text-xs uppercase tracking-[0.18em] text-neutral-500">
                       live
                     </div>
-                    <div className="self-center text-sm font-medium text-black">{call.duration}</div>
+                    <div className="self-center text-sm font-medium text-black">
+                      {call.duration}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -197,8 +248,12 @@ export default function AgentPage() {
 
         <div className="section-frame mt-5 p-6">
           <h2 className="text-xl font-semibold">Website Widget Script</h2>
-          <p className="mt-1 text-sm text-gray-600">Paste this in your website&apos;s head tag.</p>
-          <pre className="mt-4 overflow-auto rounded-lg bg-gray-100 p-3 text-xs">{embedScript}</pre>
+          <p className="mt-1 text-sm text-gray-600">
+            Paste this in your website&apos;s head tag.
+          </p>
+          <pre className="mt-4 overflow-auto rounded-lg bg-gray-100 p-3 text-xs">
+            {embedScript}
+          </pre>
           <button
             onClick={() => copy(embedScript)}
             className="mt-4 rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-neutral-800"
@@ -255,7 +310,10 @@ const TrendGraph = ({ values }: { values: number[] }) => {
     .join(" ");
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="h-[220px] w-full overflow-visible">
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      className="h-[220px] w-full overflow-visible"
+    >
       {[0.2, 0.4, 0.6, 0.8].map((ratio) => (
         <line
           key={ratio}
@@ -279,7 +337,15 @@ const TrendGraph = ({ values }: { values: number[] }) => {
         const x = (index / (values.length - 1)) * width;
         const y = height - ((value - min) / (max - min)) * height;
 
-        return <circle key={`${value}-${index}`} cx={x} cy={y} r="4.5" fill="#111827" />;
+        return (
+          <circle
+            key={`${value}-${index}`}
+            cx={x}
+            cy={y}
+            r="4.5"
+            fill="#111827"
+          />
+        );
       })}
     </svg>
   );
