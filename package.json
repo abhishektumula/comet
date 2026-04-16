@@ -1,5 +1,5 @@
 {
-  "name": "kaldock",
+  "name": "comet",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.35.0",
+    "autoprefixer": "^10.5.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.560.0",
     "motion": "^12.23.26",
     "next": "16.0.8",
+    "next-themes": "^0.4.6",
+    "postcss": "^8.5.9",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "react-markdown": "^10.1.0",
@@ -28,7 +31,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.8",
-    "tailwindcss": "^4",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
 }
